@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Assignment 1</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        let counter = 0;
+        let shwDiv = false;
+        const addCounter = () => {                 
+            counter = counter+1;            
+            render();
+        };
+        const removeCounter = () => {            
+            counter = counter-1;
+            render();            
+        };
+        const resetCounter = () => {            
+            counter = 0;
+            render();
+        };
+        const showInfo = () => {
+            shwDiv = true;            
+            render();
+        };
+        const hideInfo = () => {   
+            shwDiv = false;         
+            render();
+        };        
+        const appRoot = document.getElementById('root');
+        const render = () => {        
+            const template = (
+                <div>
+                    <h2>Counter: {counter}</h2>
+                    <button onClick={addCounter}>Add</button>&nbsp;
+                    <button onClick={removeCounter}>Remove</button>&nbsp;
+                    <button onClick={resetCounter}>Reset</button>                            
+                    <div>
+                        <h2>Toggle:</h2>
+                        <button onClick={showInfo}>Click for more info</button>
+                        <br/><br/>
+                        <div style={ shwDiv ? { display:'block'} : {display : 'none'} } >
+                            <label>To be show/hide on click of button</label><br/>
+                            <button onClick={hideInfo}>Hide info</button>
+                        </div>   
+                    </div>
+            </div>
+            );    
+        ReactDOM.render(template, appRoot);
+        };
+        render();
+    </script>
+</body>
+</html>
